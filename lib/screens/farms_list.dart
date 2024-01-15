@@ -1,18 +1,25 @@
+import 'package:farms/components/appbar.dart';
+import 'package:farms/screens/farm_detail.dart';
+import 'package:farms/screens/farm_form.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 import '../components/drawer.dart';
 
 class FarmsListData {
   final String imageUrl;
   final String locationName;
+  final String name;
   final String status;
   final Icon icon;
-
+  final double area;
   FarmsListData({
     required this.imageUrl,
     required this.locationName,
+    required this.name,
     required this.status,
     required this.icon,
+    required this.area,
   });
 }
 
@@ -24,8 +31,8 @@ class FarmLists extends StatefulWidget {
 }
 
 class _FarmListsState extends State<FarmLists> {
-late List<FarmsListData> farmData = [];
-  
+  late List<FarmsListData> farmData = [];
+
   @override
   void initState() {
     super.initState();
@@ -40,62 +47,33 @@ late List<FarmsListData> farmData = [];
     setState(() {
       farmData = [
         FarmsListData(
-          imageUrl: 'https://imgs.search.brave.com/9fYnssXx5Kaqjn8SmfFsxq-kEAcHuerTe6ZpTvrCMJE/rs:fit:500:0:0/g:ce/aHR0cHM6Ly9pbWcu/ZnJlZXBpay5jb20v/ZnJlZS1waG90by9o/aWdoLWFuZ2xlLWZh/cm1sYW5kLXZpZXdf/MjMtMjE0ODU3OTY4/MC5qcGc_c2l6ZT02/MjYmZXh0PWpwZw',
-          locationName: 'Debrezeyit Agricultural Research Center',
+          imageUrl:
+              'https://imgs.search.brave.com/9fYnssXx5Kaqjn8SmfFsxq-kEAcHuerTe6ZpTvrCMJE/rs:fit:500:0:0/g:ce/aHR0cHM6Ly9pbWcu/ZnJlZXBpay5jb20v/ZnJlZS1waG90by9o/aWdoLWFuZ2xlLWZh/cm1sYW5kLXZpZXdf/MjMtMjE0ODU3OTY4/MC5qcGc_c2l6ZT02/MjYmZXh0PWpwZw',
+          name: 'Debrezeyit Agricultural Research Center',
+          locationName: "Bishoftu, Oromia,Ethiopia",
           status: 'Active',
           icon: Icon(Icons.check_circle),
+          area: 30000,
         ),
         FarmsListData(
-          imageUrl: 'https://imgs.search.brave.com/9fYnssXx5Kaqjn8SmfFsxq-kEAcHuerTe6ZpTvrCMJE/rs:fit:500:0:0/g:ce/aHR0cHM6Ly9pbWcu/ZnJlZXBpay5jb20v/ZnJlZS1waG90by9o/aWdoLWFuZ2xlLWZh/cm1sYW5kLXZpZXdf/MjMtMjE0ODU3OTY4/MC5qcGc_c2l6ZT02/MjYmZXh0PWpwZw',
-          locationName: 'Woliso Flower Farm',
+          imageUrl:
+              'https://imgs.search.brave.com/9fYnssXx5Kaqjn8SmfFsxq-kEAcHuerTe6ZpTvrCMJE/rs:fit:500:0:0/g:ce/aHR0cHM6Ly9pbWcu/ZnJlZXBpay5jb20v/ZnJlZS1waG90by9o/aWdoLWFuZ2xlLWZh/cm1sYW5kLXZpZXdf/MjMtMjE0ODU3OTY4/MC5qcGc_c2l6ZT02/MjYmZXh0PWpwZw',
+          name: 'Woliso Flower Farm',
+          locationName: "Woliso,Shewa, Ethiopia",
           status: 'Inactive',
           icon: Icon(Icons.close_rounded),
+          area: 20000,
         ),
         // Add more data items as needed
       ];
     });
   }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: const Text("Farm MS"),
-        centerTitle: true,
-        backgroundColor: Colors.white,
-        actions: [
-          Stack(
-            children: [
-              IconButton(
-                icon: const Icon(Icons.notifications),
-                onPressed: () {
-                  // Handle notifications button press
-                },
-              ),
-              Positioned(
-                top: 8.0,
-                right: 6.0,
-                child: Container(
-                  padding: const EdgeInsets.all(4.0),
-                  decoration: BoxDecoration(
-                    color: Colors.red,
-                    borderRadius: BorderRadius.circular(20.0),
-                  ),
-                  child: const Text(
-                    '3', // Replace with your actual notification count
-                    style: TextStyle(color: Colors.white),
-                  ),
-                ),
-              ),
-            ],
-          ),
-          GestureDetector(
-            child: Container(
-              margin: const EdgeInsets.only(right: 15),
-              child: const CircleAvatar(),
-            ),
-          )
-        ],
-      ),
+            appBar: CustomAppBar(),
+
       drawer: MyDrawer(),
       body: Container(
         padding: const EdgeInsets.all(8.0),
@@ -113,19 +91,58 @@ late List<FarmsListData> farmData = [];
                 ),
               ),
             ),
-         Expanded(
+            Row(
+              children: [
+                Container(
+                  margin: EdgeInsets.only(left: 10),
+                  padding: const EdgeInsets.all(12.0),
+                  child: Text(
+                    "Farms",
+                    style: TextStyle(
+                        fontSize: 18,
+                        fontWeight: FontWeight.bold,
+                        color: Colors.green),
+                  ),
+                ),
+                SizedBox(width: 180),
+                GestureDetector(
+                  onTap: () {
+                    Get.to(FarmForm());
+                  },
+                  child: Container(
+                      padding: EdgeInsets.all(10),
+                      decoration: BoxDecoration(
+                          color: Colors.green,
+                          borderRadius: BorderRadius.all(Radius.circular(12))),
+                      child: Text(
+                        "Add Farm",
+                        style: TextStyle(color: Colors.white),
+                      )),
+                )
+              ],
+            ),
+            Expanded(
               child: ListView.builder(
                 itemCount: farmData.length,
                 itemBuilder: (context, index) {
                   FarmsListData data = farmData[index];
-                  return ListTile(
-                    leading: Container(height: 100, width: 100, child: Image.network(data.imageUrl),),
-                    title: Text(data.locationName),
-                    subtitle: Row(
-                      children: [
-                        data.icon,
-                        Text(data.status),
-                      ],
+                  return GestureDetector(
+                    onTap: () {
+                      Get.to(FarmDetail(farm: data));
+                    },
+                    child: ListTile(
+                      leading: Container(
+                        height: 100,
+                        width: 100,
+                        child: Image.network(data.imageUrl),
+                      ),
+                      title: Text(data.name),
+                      subtitle: Row(
+                        children: [
+                          data.icon,
+                          Text(data.status),
+                        ],
+                      ),
                     ),
                   );
                 },

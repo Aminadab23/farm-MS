@@ -3,6 +3,7 @@ import 'package:get/get.dart';
 import 'package:mdi/mdi.dart';
 
 import '../screens/dashboard.dart';
+import '../screens/farms_list.dart';
 
 class MyDrawer extends StatelessWidget {
   @override
@@ -41,7 +42,7 @@ class MyDrawer extends StatelessWidget {
             title: Text('Farms'),
             onTap: () {
               // Handle navigation to farms
-              Navigator.pop(context);
+               Get.to(FarmLists());
             },
           ),
           ListTile(
