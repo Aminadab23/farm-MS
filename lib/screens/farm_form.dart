@@ -2,7 +2,6 @@ import 'dart:io';
 
 import 'package:farms/components/drawer.dart';
 import 'package:farms/screens/farms_list.dart';
-import 'package:farms/screens/login.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:image_picker/image_picker.dart';
@@ -23,10 +22,9 @@ class _FarmFormState extends State<FarmForm> {
   final TextEditingController farmLocation = TextEditingController();
   final TextEditingController status = TextEditingController();
   final TextEditingController area = TextEditingController();
-  final ImagePicker _imagePicker = ImagePicker();
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
 
-  XFile? _pickedImage;
+  File? _pickedImage;
 
   String _selectedLocation = 'Select Location'; // Default text
 
@@ -44,16 +42,16 @@ class _FarmFormState extends State<FarmForm> {
     }
   }
 
-  Future<void> _getImage() async {
-  final permissionStatus = await ImagePicker().pickImage(source: ImageSource.gallery);
-
-  if (permissionStatus != null) {
-    final pickedImage = permissionStatus;
-    setState(() {
-      _pickedImage = pickedImage;
-    });
+  Future _getImage() async {
+    try {
+      final image = await ImagePicker().pickImage(source: ImageSource.gallery);
+      if (image == null) return;
+      final imageTemp = File(image.path);
+      setState(() => _pickedImage = imageTemp);
+    } catch (e) {
+      Get.snackbar("error", "permission error $e");
+    }
   }
-}
 
   void _handleFarmForm() {
     if (_formKey.currentState!.validate()) {
@@ -86,8 +84,8 @@ class _FarmFormState extends State<FarmForm> {
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       Container(
-                        margin:
-                            const EdgeInsets.symmetric(vertical: 20, horizontal: 0),
+                        margin: const EdgeInsets.symmetric(
+                            vertical: 20, horizontal: 0),
                         child: const Center(
                             child: Text(
                           "Add Farm",
@@ -101,11 +99,7 @@ class _FarmFormState extends State<FarmForm> {
                         validator: Validator.name,
                       ),
                       const SizedBox(height: 10.0),
-                      InputField(
-                        label: 'Farm Location',
-                        controller: farmLocation,
-                        validator: Validator.name,
-                      ),
+                     
                       const SizedBox(height: 10.0),
                       InputField(
                         label: 'Status',
@@ -122,12 +116,13 @@ class _FarmFormState extends State<FarmForm> {
                       const SizedBox(height: 10.0),
                       ElevatedButton(
                         onPressed: _getImage,
-                        child: const Text("Select Image"),
+                        child: _pickedImage != null
+                          ? Image.file(_pickedImage!, width: 50, height: 50,fit: BoxFit.cover,)
+                          : const Text("Select Image"),
                       ),
-                      _pickedImage != null
-                          ? Image.file(File(_pickedImage!.path))
-                          : const Text("No Image Selected"),
+                      
                       const SizedBox(height: 10.0),
+                      Text("Farm Location"),
                       InkWell(
                         onTap: _pickLocation,
                         child: Container(

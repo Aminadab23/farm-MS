@@ -1,6 +1,5 @@
 import 'package:farms/screens/farms_list.dart';
 import 'package:flutter/material.dart';
-import 'package:fl_chart/fl_chart.dart';
 import 'package:get/get.dart';
 
 import '../components/charts.dart';
@@ -205,7 +204,6 @@ class _DashboardState extends State<Dashboard>
                       ),
                     ),
 
-//TODO: the chart goes here
                      SizedBox(
                       height: 300,
                       child: MyBarGraph(farmsSummery: graphData,),

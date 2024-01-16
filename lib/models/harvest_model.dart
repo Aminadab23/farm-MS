@@ -1,5 +1,3 @@
-import 'package:farms/models/farm_model.dart';
-import 'package:flutter/material.dart';
 
 class HarvestModel {
   final String name;
