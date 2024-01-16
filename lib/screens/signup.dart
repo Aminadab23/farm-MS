@@ -26,9 +26,9 @@ class _SignUpState extends State<SignUp> {
         Get.snackbar("Error", "password not match.",
             backgroundColor: Colors.red,
             colorText: Colors.white,
-            duration: Duration(seconds: 5));
+            duration: const Duration(seconds: 5));
       } else {
-        Get.to( () => Login(),
+        Get.to( () => const Login(),
   arguments: {
     "email": emailController.text,
     "password": passwordController.text,
@@ -66,51 +66,51 @@ class _SignUpState extends State<SignUp> {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   Container(
-                  margin: EdgeInsets.symmetric(vertical: 20, horizontal: 0),
-                  child: Center(child: Text("Create Account", style: TextStyle(fontWeight: FontWeight.bold, fontSize: 26),)),),
+                  margin: const EdgeInsets.symmetric(vertical: 20, horizontal: 0),
+                  child: const Center(child: Text("Create Account", style: TextStyle(fontWeight: FontWeight.bold, fontSize: 26),)),),
                   InputField(
                     label: 'First Name',
                     controller: firstNameController,
                     validator: Validator.name,
                   ),
-                  SizedBox(height: 10.0),
+                  const SizedBox(height: 10.0),
                   InputField(
                     label: 'Last Name',
                     controller: lastNameController,
                     validator: Validator.name,
                   ),
-                  SizedBox(height: 10.0),
+                  const SizedBox(height: 10.0),
                   InputField(
                     label: 'Email',
                     controller: emailController,
                     validator: Validator.email,
                   ),
-                  SizedBox(height: 10.0),
+                  const SizedBox(height: 10.0),
                   InputField(
                     label: 'Password',
                     controller: passwordController,
                     isPassword: true,
                     validator: Validator.password,
                   ),
-                  SizedBox(height: 10.0),
+                  const SizedBox(height: 10.0),
                   InputField(
                     label: 'Confirm Password',
                     controller: confirmPasswordController,
                     isPassword: true,
                     validator: Validator.password,
                   ),
-                  SizedBox(height: 22.0),
+                  const SizedBox(height: 22.0),
                   InkWell(
                     onTap: _handleSignUp,
                     child: Container(
                       width: 300,
                       decoration: BoxDecoration(
-                        color: Color.fromARGB(255, 14, 221,59),
+                        color: const Color.fromARGB(255, 14, 221,59),
                         borderRadius: BorderRadius.circular(10.0),
                         // border: Border.all(color: Colors.black),
                       ),
-                      padding: EdgeInsets.all(12.0),
-                      child: Center(
+                      padding: const EdgeInsets.all(12.0),
+                      child: const Center(
                         child: Text(
                           'Sign Up',
                           style: TextStyle(
@@ -121,13 +121,13 @@ class _SignUpState extends State<SignUp> {
                       ),
                     ),
                   ),
-                  SizedBox(height: 15,),
+                  const SizedBox(height: 15,),
                   Center(
                   child:  Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         const Text("Already have account?", style: TextStyle(fontSize: 18.0),),
-                        SizedBox(width: 10),
+                        const SizedBox(width: 10),
                         GestureDetector(
                           onTap: () {
                             Get.to(const Login());

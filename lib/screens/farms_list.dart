@@ -3,25 +3,8 @@ import 'package:farms/screens/farm_detail.dart';
 import 'package:farms/screens/farm_form.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-
+import "../models/farm_model.dart";
 import '../components/drawer.dart';
-
-class FarmsListData {
-  final String imageUrl;
-  final String locationName;
-  final String name;
-  final String status;
-  final Icon icon;
-  final double area;
-  FarmsListData({
-    required this.imageUrl,
-    required this.locationName,
-    required this.name,
-    required this.status,
-    required this.icon,
-    required this.area,
-  });
-}
 
 class FarmLists extends StatefulWidget {
   const FarmLists({Key? key}) : super(key: key);
@@ -41,7 +24,7 @@ class _FarmListsState extends State<FarmLists> {
 
   void fetchData() async {
     // Simulate fetching data from an API or other source
-    await Future.delayed(Duration(seconds: 2));
+    await Future.delayed(const Duration(seconds: 2));
 
     // Replace this with your actual data fetching logic
     setState(() {
@@ -52,7 +35,7 @@ class _FarmListsState extends State<FarmLists> {
           name: 'Debrezeyit Agricultural Research Center',
           locationName: "Bishoftu, Oromia,Ethiopia",
           status: 'Active',
-          icon: Icon(Icons.check_circle),
+          icon: const Icon(Icons.check_circle),
           area: 30000,
         ),
         FarmsListData(
@@ -61,7 +44,7 @@ class _FarmListsState extends State<FarmLists> {
           name: 'Woliso Flower Farm',
           locationName: "Woliso,Shewa, Ethiopia",
           status: 'Inactive',
-          icon: Icon(Icons.close_rounded),
+          icon: const Icon(Icons.close_rounded),
           area: 20000,
         ),
         // Add more data items as needed
@@ -72,7 +55,7 @@ class _FarmListsState extends State<FarmLists> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-            appBar: CustomAppBar(),
+            appBar: const CustomAppBar(),
 
       drawer: MyDrawer(),
       body: Container(
@@ -80,23 +63,23 @@ class _FarmListsState extends State<FarmLists> {
         child: Column(
           children: [
             Container(
-              margin: EdgeInsets.symmetric(vertical: 10, horizontal: 8),
+              margin: const EdgeInsets.symmetric(vertical: 10, horizontal: 8),
               child: TextField(
                 decoration: InputDecoration(
                   hintText: 'Search',
                   border: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(12.0),
                   ),
-                  suffixIcon: Icon(Icons.search),
+                  suffixIcon: const Icon(Icons.search),
                 ),
               ),
             ),
             Row(
               children: [
                 Container(
-                  margin: EdgeInsets.only(left: 10),
+                  margin: const EdgeInsets.only(left: 10),
                   padding: const EdgeInsets.all(12.0),
-                  child: Text(
+                  child: const Text(
                     "Farms",
                     style: TextStyle(
                         fontSize: 18,
@@ -104,17 +87,17 @@ class _FarmListsState extends State<FarmLists> {
                         color: Colors.green),
                   ),
                 ),
-                SizedBox(width: 180),
+                const SizedBox(width: 180),
                 GestureDetector(
                   onTap: () {
-                    Get.to(FarmForm());
+                    Get.to(const FarmForm());
                   },
                   child: Container(
-                      padding: EdgeInsets.all(10),
-                      decoration: BoxDecoration(
+                      padding: const EdgeInsets.all(10),
+                      decoration: const BoxDecoration(
                           color: Colors.green,
                           borderRadius: BorderRadius.all(Radius.circular(12))),
-                      child: Text(
+                      child: const Text(
                         "Add Farm",
                         style: TextStyle(color: Colors.white),
                       )),

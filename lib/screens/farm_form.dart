@@ -57,7 +57,7 @@ class _FarmFormState extends State<FarmForm> {
 
   void _handleFarmForm() {
     if (_formKey.currentState!.validate()) {
-      Get.to(() => FarmLists());
+      Get.to(() => const FarmLists());
       Get.snackbar("Success", "Added Farm Successfully",
           backgroundColor: Colors.green, colorText: Colors.white);
     }
@@ -66,18 +66,18 @@ class _FarmFormState extends State<FarmForm> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: CustomAppBar(),
+      appBar: const CustomAppBar(),
       drawer: MyDrawer(),
       body: Center(
         child: Column(
           children: [
-            SizedBox(height: 25),
+            const SizedBox(height: 25),
             Padding(
               padding: const EdgeInsets.all(16.0),
               child: Container(
-                padding: EdgeInsets.all(20),
+                padding: const EdgeInsets.all(20),
                 decoration: BoxDecoration(
-                  borderRadius: BorderRadius.all(Radius.circular(15)),
+                  borderRadius: const BorderRadius.all(Radius.circular(15)),
                   border: Border.all(color: Colors.black),
                 ),
                 child: Form(
@@ -87,8 +87,8 @@ class _FarmFormState extends State<FarmForm> {
                     children: [
                       Container(
                         margin:
-                            EdgeInsets.symmetric(vertical: 20, horizontal: 0),
-                        child: Center(
+                            const EdgeInsets.symmetric(vertical: 20, horizontal: 0),
+                        child: const Center(
                             child: Text(
                           "Add Farm",
                           style: TextStyle(
@@ -100,34 +100,34 @@ class _FarmFormState extends State<FarmForm> {
                         controller: farmName,
                         validator: Validator.name,
                       ),
-                      SizedBox(height: 10.0),
+                      const SizedBox(height: 10.0),
                       InputField(
                         label: 'Farm Location',
                         controller: farmLocation,
                         validator: Validator.name,
                       ),
-                      SizedBox(height: 10.0),
+                      const SizedBox(height: 10.0),
                       InputField(
                         label: 'Status',
                         controller: status,
                         validator: Validator.name,
                       ),
-                      SizedBox(height: 10.0),
+                      const SizedBox(height: 10.0),
                       InputField(
                         label: 'Area',
                         controller: area,
                         isPassword: true,
                         validator: Validator.name,
                       ),
-                      SizedBox(height: 10.0),
+                      const SizedBox(height: 10.0),
                       ElevatedButton(
                         onPressed: _getImage,
-                        child: Text("Select Image"),
+                        child: const Text("Select Image"),
                       ),
                       _pickedImage != null
                           ? Image.file(File(_pickedImage!.path))
-                          : Text("No Image Selected"),
-                      SizedBox(height: 10.0),
+                          : const Text("No Image Selected"),
+                      const SizedBox(height: 10.0),
                       InkWell(
                         onTap: _pickLocation,
                         child: Container(
@@ -136,11 +136,11 @@ class _FarmFormState extends State<FarmForm> {
                             border: Border.all(color: Colors.black),
                             borderRadius: BorderRadius.circular(10.0),
                           ),
-                          padding: EdgeInsets.all(12.0),
+                          padding: const EdgeInsets.all(12.0),
                           child: Center(
                             child: Text(
                               _selectedLocation ?? 'Pick Location',
-                              style: TextStyle(
+                              style: const TextStyle(
                                 fontSize: 18.0,
                                 color: Colors.black,
                               ),
@@ -148,17 +148,17 @@ class _FarmFormState extends State<FarmForm> {
                           ),
                         ),
                       ),
-                      SizedBox(height: 22.0),
+                      const SizedBox(height: 22.0),
                       InkWell(
                         onTap: _handleFarmForm,
                         child: Container(
                           width: 300,
                           decoration: BoxDecoration(
-                            color: Color.fromARGB(255, 14, 221, 59),
+                            color: const Color.fromARGB(255, 14, 221, 59),
                             borderRadius: BorderRadius.circular(10.0),
                           ),
-                          padding: EdgeInsets.all(12.0),
-                          child: Center(
+                          padding: const EdgeInsets.all(12.0),
+                          child: const Center(
                             child: Text(
                               'Register',
                               style: TextStyle(
@@ -169,7 +169,7 @@ class _FarmFormState extends State<FarmForm> {
                           ),
                         ),
                       ),
-                      SizedBox(height: 15),
+                      const SizedBox(height: 15),
                     ],
                   ),
                 ),
