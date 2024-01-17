@@ -28,7 +28,7 @@ class FarmButton extends StatelessWidget {
           borderRadius: BorderRadius.circular(10.0),
           border: Border.all(color: Colors.black), // Add a border
         ),
-        padding: EdgeInsets.all(12.0),
+        padding: const EdgeInsets.all(12.0),
         child: Center(
           child: Text(
             label,

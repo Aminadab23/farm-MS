@@ -3,7 +3,7 @@ import 'package:farms/screens/signup.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-import '../components/buttons.dart';
+
 import '../components/inputfields.dart';
 
 class Login extends StatefulWidget {
@@ -41,7 +41,7 @@ class _LoginState extends State<Login> {
         ),
       ),
       Container(
-        margin: EdgeInsets.only(top: 40),
+        margin: const EdgeInsets.only(top: 40),
         child: Padding(
           padding: const EdgeInsets.all(16.0),
           child: Form(
@@ -49,8 +49,8 @@ class _LoginState extends State<Login> {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 Container(
-                  margin: EdgeInsets.symmetric(vertical: 20, horizontal: 0),
-                  child: Center(child: Text("Login", style: TextStyle(fontWeight: FontWeight.bold, fontSize: 46),)),),
+                  margin: const EdgeInsets.symmetric(vertical: 20, horizontal: 0),
+                  child: const Center(child: Text("Login", style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 46),)),),
                 InputField(
                   label: 'Email',
                   controller: emailController,
@@ -96,7 +96,7 @@ class _LoginState extends State<Login> {
                     mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         const Text("Dont have Account?", style: TextStyle(fontSize: 18.0),),
-                        SizedBox(width: 10),
+                        const SizedBox(width: 10),
                         GestureDetector(
                           onTap: () {
                             Get.to(const SignUp());
@@ -126,7 +126,7 @@ class _LoginState extends State<Login> {
                   child: Image.network(
                       "https://imgs.search.brave.com/RcfrjLHnsNTGPLe4i6nhIGpgqXGCWrKWRGS2zDqh0dM/rs:fit:500:0:0/g:ce/aHR0cHM6Ly9jZG4x/Lmljb25maW5kZXIu/Y29tL2RhdGEvaWNv/bnMvZ29vZ2xlLXMt/bG9nby8xNTAvR29v/Z2xlX0ljb25zLTA5/LTEyOC5wbmc"),
                 ),
-                SizedBox(width: 40,),
+                const SizedBox(width: 40,),
                 Container(
                   decoration: BoxDecoration(
                       border: Border.all(color: Colors.black),

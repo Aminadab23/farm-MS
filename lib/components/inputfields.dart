@@ -4,12 +4,14 @@ class InputField extends StatelessWidget {
   final String label;
   final TextEditingController controller;
   final bool isPassword;
+  final String hint;
   final String? Function(String?)? validator;
   const InputField({
     Key? key,
     required this.label,
     required this.controller,
     this.isPassword = false,
+    this.hint="",
     required this.validator,
   }) : super(key: key);
 
@@ -20,6 +22,7 @@ class InputField extends StatelessWidget {
       obscureText: isPassword,
       decoration: InputDecoration(
         labelText: label,
+        hintText: hint,
         border: OutlineInputBorder(
           borderRadius: BorderRadius.circular(10.0),
         ),

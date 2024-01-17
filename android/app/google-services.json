@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "978052084753",
+    "project_id": "farms-eth",
+    "storage_bucket": "farms-eth.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:978052084753:android:d651d266d73ca78488adb0",
+        "android_client_info": {
+          "package_name": "com.example.farms"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB06SwlWL6UziCI0PNgkEkw0cYYaGnUe6Y"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:978052084753:android:c39c08639d1b53d988adb0",
+        "android_client_info": {
+          "package_name": "com.farms.v1"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB06SwlWL6UziCI0PNgkEkw0cYYaGnUe6Y"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
