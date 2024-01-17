@@ -1,5 +1,6 @@
 import 'package:farms/components/appbar.dart';
 import 'package:farms/models/user_model.dart';
+import 'package:farms/screens/login.dart';
 import 'package:farms/screens/notification_settings.dart';
 import 'package:farms/screens/profile.dart';
 import 'package:flutter/material.dart';
@@ -31,7 +32,10 @@ class Settings extends StatelessWidget {
                     color: Color.fromARGB(255, 51, 51, 50),
                     fontSize: 16,
                   )),
-                  trailing: Icon(Icons.arrow_forward_ios_rounded, color: Colors.orange, ),
+              trailing: Icon(
+                Icons.arrow_forward_ios_rounded,
+                color: Colors.orange,
+              ),
               onTap: () {
                 Get.to(ProfilePage(
                   user: user,
@@ -54,7 +58,10 @@ class Settings extends StatelessWidget {
                     color: Color.fromARGB(255, 51, 51, 50),
                     fontSize: 16,
                   )),
-                  trailing: Icon(Icons.arrow_forward_ios_rounded, color: Colors.orange, ),
+              trailing: Icon(
+                Icons.arrow_forward_ios_rounded,
+                color: Colors.orange,
+              ),
               onTap: () {
                 Get.to(ChangePassword(
                   user: user,
@@ -77,7 +84,10 @@ class Settings extends StatelessWidget {
                     color: Color.fromARGB(255, 51, 51, 50),
                     fontSize: 16,
                   )),
-                  trailing: Icon(Icons.arrow_forward_ios_rounded, color: Colors.orange, ),
+              trailing: Icon(
+                Icons.arrow_forward_ios_rounded,
+                color: Colors.orange,
+              ),
               onTap: () {
                 Get.to(NotificationSettingsScreen());
               },
@@ -98,7 +108,10 @@ class Settings extends StatelessWidget {
                     color: Color.fromARGB(255, 51, 51, 50),
                     fontSize: 16,
                   )),
-                  trailing: Icon(Icons.arrow_forward_ios_rounded, color: Colors.orange, ),
+              trailing: Icon(
+                Icons.arrow_forward_ios_rounded,
+                color: Colors.orange,
+              ),
               onTap: () {
                 Get.to(ProfilePage(
                   user: user,
@@ -106,28 +119,29 @@ class Settings extends StatelessWidget {
               },
             ),
             ListTile(
-              leading: const Icon(
-                size: 24,
-                Icons.logout_outlined,
-                color: Colors.orange,
-              ),
-              title: const Text('Logout',
-                  style: TextStyle(
-                      color: Colors.orange,
-                      fontSize: 24,
-                      fontWeight: FontWeight.bold)),
-              subtitle: const Text("To sign out of your account",
-                  style: TextStyle(
-                    color: Color.fromARGB(255, 51, 51, 50),
-                    fontSize: 16,
-                  )),
-                  // trailing: Icon(Icons.arrow_forward_ios_rounded, color: Colors.orange, ),
-              onTap: () {
-                Get.to(ProfilePage(
-                  user: user,
-                ));
-              },
-            ),
+                leading: const Icon(
+                  size: 24,
+                  Icons.logout_outlined,
+                  color: Colors.orange,
+                ),
+                title: const Text('Logout',
+                    style: TextStyle(
+                        color: Colors.orange,
+                        fontSize: 24,
+                        fontWeight: FontWeight.bold)),
+                subtitle: const Text("To sign out of your account",
+                    style: TextStyle(
+                      color: Color.fromARGB(255, 51, 51, 50),
+                      fontSize: 16,
+                    )),
+                // trailing: Icon(Icons.arrow_forward_ios_rounded, color: Colors.orange, ),
+                onTap: () {
+                  Get.to(Login())?.then((result) {
+                    if (result == null) {
+                      Get.until((route) => false);
+                    }
+                  });
+                }),
           ],
         ));
   }
