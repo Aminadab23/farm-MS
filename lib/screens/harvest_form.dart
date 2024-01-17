@@ -1,12 +1,8 @@
-import 'dart:io';
 
 import 'package:farms/components/drawer.dart';
-import 'package:farms/screens/farms_list.dart';
 import 'package:farms/screens/harvest_list.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:image_picker/image_picker.dart';
-import 'package:location/location.dart';
 
 import '../components/appbar.dart';
 import '../components/inputfields.dart';
@@ -26,11 +22,7 @@ class _HarvestFormState extends State<HarvestForm> {
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
   String selectedFarm = 'Farm 1';
 
-  List<String> farmTypes = [
-    'Farm 1',
-    'Farm 2',
-    'Farm 3'
-  ];
+  List<String> farmTypes = ['Farm 1', 'Farm 2', 'Farm 3'];
 
   List<String> cropTypes = [
     'Type 1',
@@ -62,7 +54,7 @@ class _HarvestFormState extends State<HarvestForm> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: const CustomAppBar(),
+      appBar: CustomAppBar(),
       drawer: MyDrawer(),
       body: Center(
         child: Column(
@@ -91,48 +83,45 @@ class _HarvestFormState extends State<HarvestForm> {
                               fontWeight: FontWeight.bold, fontSize: 26),
                         )),
                       ),
-                      Row(
-                        children:[
-                          DropdownButton<String>(
-                        value: selectedFarm,
-                        onChanged: (String? value) {
-                          setState(() {
-                            selectedFarm = value!;
-                          });
-                        },
-                        items: farmTypes.map((String farmType) {
-                          return DropdownMenuItem<String>(
-                            value: farmType,
-                            child: Text(farmType),
-                          );
-                        }).toList(),
-                        hint: const Text('Select Farm '),
-                      ),
-                      SizedBox(width: 50),
-                      DropdownButton<String>(
-                        value: selectedCropType,
-                        onChanged: (String? value) {
-                          setState(() {
-                            selectedCropType = value!;
-                          });
-                        },
-                        items: cropTypes.map((String cropType) {
-                          return DropdownMenuItem<String>(
-                            value: cropType,
-                            child: Text(cropType),
-                          );
-                        }).toList(),
-                        hint: const Text('Select Crop Type'),
-                      ),
-                        ]
-                      ),
+                      Row(children: [
+                        DropdownButton<String>(
+                          value: selectedFarm,
+                          onChanged: (String? value) {
+                            setState(() {
+                              selectedFarm = value!;
+                            });
+                          },
+                          items: farmTypes.map((String farmType) {
+                            return DropdownMenuItem<String>(
+                              value: farmType,
+                              child: Text(farmType),
+                            );
+                          }).toList(),
+                          hint: const Text('Select Farm '),
+                        ),
+                        SizedBox(width: 50),
+                        DropdownButton<String>(
+                          value: selectedCropType,
+                          onChanged: (String? value) {
+                            setState(() {
+                              selectedCropType = value!;
+                            });
+                          },
+                          items: cropTypes.map((String cropType) {
+                            return DropdownMenuItem<String>(
+                              value: cropType,
+                              child: Text(cropType),
+                            );
+                          }).toList(),
+                          hint: const Text('Select Crop Type'),
+                        ),
+                      ]),
                       const SizedBox(height: 10.0),
-                       InputField(
+                      InputField(
                         label: 'Crop Name',
                         controller: cropName,
                         validator: Validator.name,
                       ),
-                    
                       const SizedBox(height: 10.0),
                       InputField(
                         label: 'Quantity',
@@ -140,61 +129,61 @@ class _HarvestFormState extends State<HarvestForm> {
                         validator: Validator.name,
                       ),
                       const SizedBox(height: 10.0),
-                     
-                     Row(children: [
- DropdownButton<String>(
-                        value: selectedQuality,
-                        onChanged: (String? value) {
-                          setState(() {
-                            selectedQuality = value!;
-                          });
-                        },
-                        items: qualities.map((String quality) {
-                          return DropdownMenuItem<String>(
-                            value: quality,
-                            child: Text(quality),
-                          );
-                        }).toList(),
-                        hint: const Text('Select Quality'),
-                      ),
-                      const SizedBox(width: 22.0),
-                      InkWell(
-                        onTap: () async {
-                          final DateTime? pickedDate = await showDatePicker(
-                            context: context,
-                            initialDate: DateTime.now(),
-                            firstDate: DateTime.now(),
-                            lastDate: DateTime(DateTime.now().year + 1),
-                          );
-                          if (pickedDate != null &&
-                              pickedDate != selectedDate) {
-                            setState(() {
-                              selectedDate = pickedDate;
-                            });
-                          }
-                        },
-                        child: Container(
-                          width: 150,
-                          decoration: BoxDecoration(
-                            border: Border.all(color: Colors.black),
-                            borderRadius: BorderRadius.circular(10.0),
+                      Row(
+                        children: [
+                          DropdownButton<String>(
+                            value: selectedQuality,
+                            onChanged: (String? value) {
+                              setState(() {
+                                selectedQuality = value!;
+                              });
+                            },
+                            items: qualities.map((String quality) {
+                              return DropdownMenuItem<String>(
+                                value: quality,
+                                child: Text(quality),
+                              );
+                            }).toList(),
+                            hint: const Text('Select Quality'),
                           ),
-                          padding: const EdgeInsets.all(12.0),
-                          child: Center(
-                            child: Text(
-                              selectedDate != null
-                                  ? 'Harvest Date: ${selectedDate!.day}, ${selectedDate!.month} , ${selectedDate!.year}'
-                                  : 'Select Harvest Date',
-                              style: const TextStyle(
-                                fontSize: 18.0,
-                                color: Colors.black,
+                          const SizedBox(width: 22.0),
+                          InkWell(
+                            onTap: () async {
+                              final DateTime? pickedDate = await showDatePicker(
+                                context: context,
+                                initialDate: DateTime.now(),
+                                firstDate: DateTime.now(),
+                                lastDate: DateTime(DateTime.now().year + 1),
+                              );
+                              if (pickedDate != null &&
+                                  pickedDate != selectedDate) {
+                                setState(() {
+                                  selectedDate = pickedDate;
+                                });
+                              }
+                            },
+                            child: Container(
+                              width: 150,
+                              decoration: BoxDecoration(
+                                border: Border.all(color: Colors.black),
+                                borderRadius: BorderRadius.circular(10.0),
+                              ),
+                              padding: const EdgeInsets.all(12.0),
+                              child: Center(
+                                child: Text(
+                                  selectedDate != null
+                                      ? 'Harvest Date: ${selectedDate!.day}, ${selectedDate!.month} , ${selectedDate!.year}'
+                                      : 'Select Harvest Date',
+                                  style: const TextStyle(
+                                    fontSize: 18.0,
+                                    color: Colors.black,
+                                  ),
+                                ),
                               ),
                             ),
                           ),
-                        ),
+                        ],
                       ),
-                     ],),
-                     
                       const SizedBox(height: 22.0),
                       InkWell(
                         onTap: _handleHarvestForm,

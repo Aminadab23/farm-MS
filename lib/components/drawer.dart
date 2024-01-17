@@ -1,5 +1,6 @@
 import 'package:farms/models/user_model.dart';
 import 'package:farms/screens/notes_list.dart';
+import 'package:farms/screens/jobs_list.dart';
 import 'package:farms/screens/profile.dart';
 import 'package:farms/screens/settings.dart';
 import 'package:flutter/material.dart';
@@ -81,8 +82,7 @@ class MyDrawer extends StatelessWidget {
             ),
             title: const Text('Jobs'),
             onTap: () {
-              // Handle navigation to jobs
-              Navigator.pop(context);
+             Get.to(JobsList());
             },
           ),
           ListTile(

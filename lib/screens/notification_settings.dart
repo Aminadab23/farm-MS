@@ -21,7 +21,7 @@ class _NotificationSettingsScreenState extends State<NotificationSettingsScreen>
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Notification Settings'),
+        title: const Text('Notification Settings'),
       ),
       body: Padding(
         padding: const EdgeInsets.all(16.0),
@@ -29,8 +29,8 @@ class _NotificationSettingsScreenState extends State<NotificationSettingsScreen>
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
             ListTile(
-              title: Text('Push Notification'),
-              subtitle: Text('Tap to enable'),
+              title: const Text('Push Notification'),
+              subtitle: const Text('Tap to enable'),
               trailing: Switch(
                 value: pushNotificationEnabled,
                 onChanged: (value) {
@@ -46,8 +46,8 @@ class _NotificationSettingsScreenState extends State<NotificationSettingsScreen>
               },
             ),
             ListTile(
-              title: Text('SMS Notification'),
-              subtitle: Text('Tap to enable'),
+              title: const Text('SMS Notification'),
+              subtitle: const Text('Tap to enable'),
               trailing: Switch(
                 value: smsNotificationEnabled,
                 onChanged: (value) {
@@ -62,14 +62,14 @@ class _NotificationSettingsScreenState extends State<NotificationSettingsScreen>
                 });
               },
             ),
-            SizedBox(height: 16),
+            const SizedBox(height: 16),
             GestureDetector(
               onTap: _resetSettings,
               child: Container(
                 width: 80,
                 height: 50,
-                decoration: BoxDecoration(color: Colors.green, borderRadius: BorderRadius.all(Radius.circular(15))),
-                child: Center(child: Text('Reset Settings',style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold, fontSize: 20),))),
+                decoration: const BoxDecoration(color: Colors.green, borderRadius: BorderRadius.all(Radius.circular(15))),
+                child: const Center(child: Text('Reset Settings',style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold, fontSize: 20),))),
             ),
           ],
         ),

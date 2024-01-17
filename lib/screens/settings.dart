@@ -32,7 +32,7 @@ class Settings extends StatelessWidget {
                     color: Color.fromARGB(255, 51, 51, 50),
                     fontSize: 16,
                   )),
-              trailing: Icon(
+              trailing: const Icon(
                 Icons.arrow_forward_ios_rounded,
                 color: Colors.orange,
               ),
@@ -58,7 +58,7 @@ class Settings extends StatelessWidget {
                     color: Color.fromARGB(255, 51, 51, 50),
                     fontSize: 16,
                   )),
-              trailing: Icon(
+              trailing: const Icon(
                 Icons.arrow_forward_ios_rounded,
                 color: Colors.orange,
               ),
@@ -84,7 +84,7 @@ class Settings extends StatelessWidget {
                     color: Color.fromARGB(255, 51, 51, 50),
                     fontSize: 16,
                   )),
-              trailing: Icon(
+              trailing: const Icon(
                 Icons.arrow_forward_ios_rounded,
                 color: Colors.orange,
               ),
@@ -108,7 +108,7 @@ class Settings extends StatelessWidget {
                     color: Color.fromARGB(255, 51, 51, 50),
                     fontSize: 16,
                   )),
-              trailing: Icon(
+              trailing: const Icon(
                 Icons.arrow_forward_ios_rounded,
                 color: Colors.orange,
               ),
@@ -136,7 +136,7 @@ class Settings extends StatelessWidget {
                     )),
                 // trailing: Icon(Icons.arrow_forward_ios_rounded, color: Colors.orange, ),
                 onTap: () {
-                  Get.to(Login())?.then((result) {
+                  Get.to(const Login())?.then((result) {
                     if (result == null) {
                       Get.until((route) => false);
                     }

@@ -39,9 +39,9 @@ class _NotesListState extends State<NotesList> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Container(
-        padding: EdgeInsets.symmetric(horizontal: 12),
+        padding: const EdgeInsets.symmetric(horizontal: 12),
         child: GridView.builder(
-          gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+          gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
             crossAxisCount: 2,
             crossAxisSpacing: 8.0,
             mainAxisSpacing: 8.0,
@@ -49,19 +49,25 @@ class _NotesListState extends State<NotesList> {
           itemCount:
               items.length, // Replace with the actual number of items you have
           itemBuilder: (context, index) {
-             NoteModel item = items[index];
+            NoteModel item = items[index];
             return GestureDetector(
               onTap: () {
-                 Get.to(NoteDetail(note: item,));
+                Get.to(NoteDetail(
+                  note: item,
+                ));
               },
               child: Card(
                   child: Column(children: [
-                Center(child: Text(item.title, style: TextStyle(fontWeight: FontWeight.bold),)),
+                Center(
+                    child: Text(
+                  item.title,
+                  style: const TextStyle(fontWeight: FontWeight.bold),
+                )),
                 Padding(
-                    padding: EdgeInsets.all(8.0),
+                    padding: const EdgeInsets.all(8.0),
                     child: Text(item.description)),
                 Container(
-                    padding: EdgeInsets.all(5.0),
+                    padding: const EdgeInsets.all(5.0),
                     alignment: Alignment.centerRight,
                     child: Text(item.date))
               ])),
@@ -84,7 +90,7 @@ class _NotesState extends State<Notes> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: const CustomAppBar(),
+      appBar: CustomAppBar(),
       drawer: MyDrawer(),
       body: Container(
         padding: const EdgeInsets.all(8.0),
@@ -132,7 +138,7 @@ class _NotesState extends State<Notes> {
                 )
               ],
             ),
-            Expanded(child: NotesList()),
+            const Expanded(child: NotesList()),
           ],
         ),
       ),

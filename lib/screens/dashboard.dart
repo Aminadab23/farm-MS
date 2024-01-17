@@ -1,4 +1,6 @@
 import 'package:farms/screens/farms_list.dart';
+import 'package:farms/screens/harvest_list.dart';
+import 'package:farms/screens/jobs_list.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -214,24 +216,246 @@ class _DashboardState extends State<Dashboard>
             ),
 
             // Content for Jobs tab
-            Container(
-              child: Column(
-                children: [
-                  const Text("Jobs", style: TextStyle(color: Colors.green)),
-                  Image.network(""),
-                ],
+           GestureDetector(
+              onTap: () {
+                // Navigate to the detail screen for the selected item in the "Farm" tab
+                Get.to(const JobsList());
+              },
+              child: Container(
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  children: [
+                    const SizedBox(height: 20.0),
+                    const Text("Job 1",
+                        style: TextStyle(fontSize: 18, color: Colors.green)),
+                    Container(
+                      margin: const EdgeInsets.symmetric(
+                          vertical: 12, horizontal: 15),
+                      child: const Stack(
+                        children: [
+                          LinearProgressIndicator(
+                            borderRadius: BorderRadius.all(Radius.circular(20)),
+                            minHeight: 24.0,
+                            value: 0.3,
+                            backgroundColor: Color.fromARGB(255, 255, 255, 255),
+                            color: Colors.green,
+                          ),
+                          Positioned(
+                            left: 0,
+                            right: 0,
+                            top: 0,
+                            bottom: 0,
+                            child: Center(
+                              child: Text(
+                                '30%', // Replace with the actual percentage
+                                style: TextStyle(
+                                  color: Colors.black,
+                                  fontWeight: FontWeight.bold,
+                                ),
+                              ),
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+
+                    const SizedBox(height: 20.0),
+                    const Text("Job 2",
+                        style: TextStyle(fontSize: 18, color: Colors.green)),
+                    Container(
+                      margin: const EdgeInsets.symmetric(
+                          vertical: 12, horizontal: 15),
+                      child: const Stack(
+                        children: [
+                          LinearProgressIndicator(
+                            borderRadius: BorderRadius.all(Radius.circular(20)),
+                            minHeight: 24.0,
+                            value: 0.8,
+                            backgroundColor: Color.fromARGB(255, 255, 255, 255),
+                            color: Color.fromARGB(255, 238, 111, 26),
+                          ),
+                          Positioned(
+                            left: 0,
+                            right: 0,
+                            top: 0,
+                            bottom: 0,
+                            child: Center(
+                              child: Text(
+                                '80%', // Replace with the actual percentage
+                                style: TextStyle(
+                                  color: Colors.black,
+                                  fontWeight: FontWeight.bold,
+                                ),
+                              ),
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                    const SizedBox(height: 20.0),
+                    const Text("Job 3",
+                        style: TextStyle(fontSize: 18, color: Colors.green)),
+                    Container(
+                      margin: const EdgeInsets.symmetric(
+                          vertical: 12, horizontal: 15),
+                      child: const Stack(
+                        children: [
+                          LinearProgressIndicator(
+                            borderRadius: BorderRadius.all(Radius.circular(20)),
+                            minHeight: 24.0,
+                            value: 0.6,
+                            backgroundColor: Color.fromARGB(255, 255, 255, 255),
+                            color: Colors.green,
+                          ),
+                          Positioned(
+                            left: 0,
+                            right: 0,
+                            top: 0,
+                            bottom: 0,
+                            child: Center(
+                              child: Text(
+                                '60%',
+                                style: TextStyle(
+                                  color: Colors.black,
+                                  fontWeight: FontWeight.bold,
+                                ),
+                              ),
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+
+                     SizedBox(
+                      height: 300,
+                      child: MyBarGraph(farmsSummery: graphData,),
+                    )
+                  ],
+                ),
               ),
             ),
 
+
             // Content for Harvest tab
-            Container(
-              child: Column(
-                children: [
-                  const Text("Harvest", style: TextStyle(color: Colors.green)),
-                  Image.network(""),
-                ],
+            GestureDetector(
+              onTap: () {
+                // Navigate to the detail screen for the selected item in the "Farm" tab
+                Get.to(const HarvestList());
+              },
+              child: Container(
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  children: [
+                    const SizedBox(height: 20.0),
+                    const Text("Harvest 1",
+                        style: TextStyle(fontSize: 18, color: Colors.green)),
+                    Container(
+                      margin: const EdgeInsets.symmetric(
+                          vertical: 12, horizontal: 15),
+                      child: const Stack(
+                        children: [
+                          LinearProgressIndicator(
+                            borderRadius: BorderRadius.all(Radius.circular(20)),
+                            minHeight: 24.0,
+                            value: 0.5,
+                            backgroundColor: Color.fromARGB(255, 255, 255, 255),
+                            color: Colors.green,
+                          ),
+                          Positioned(
+                            left: 0,
+                            right: 0,
+                            top: 0,
+                            bottom: 0,
+                            child: Center(
+                              child: Text(
+                                '50%', // Replace with the actual percentage
+                                style: TextStyle(
+                                  color: Colors.black,
+                                  fontWeight: FontWeight.bold,
+                                ),
+                              ),
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+
+                    const SizedBox(height: 20.0),
+                    const Text("Harvest 2",
+                        style: TextStyle(fontSize: 18, color: Colors.green)),
+                    Container(
+                      margin: const EdgeInsets.symmetric(
+                          vertical: 12, horizontal: 15),
+                      child: const Stack(
+                        children: [
+                          LinearProgressIndicator(
+                            borderRadius: BorderRadius.all(Radius.circular(20)),
+                            minHeight: 24.0,
+                            value: 0.2,
+                            backgroundColor: Color.fromARGB(255, 255, 255, 255),
+                            color: Color.fromARGB(255, 238, 111, 26),
+                          ),
+                          Positioned(
+                            left: 0,
+                            right: 0,
+                            top: 0,
+                            bottom: 0,
+                            child: Center(
+                              child: Text(
+                                '20%', // Replace with the actual percentage
+                                style: TextStyle(
+                                  color: Colors.black,
+                                  fontWeight: FontWeight.bold,
+                                ),
+                              ),
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                    const SizedBox(height: 20.0),
+                    const Text("Harvest 3",
+                        style: TextStyle(fontSize: 18, color: Colors.green)),
+                    Container(
+                      margin: const EdgeInsets.symmetric(
+                          vertical: 12, horizontal: 15),
+                      child: const Stack(
+                        children: [
+                          LinearProgressIndicator(
+                            borderRadius: BorderRadius.all(Radius.circular(20)),
+                            minHeight: 24.0,
+                            value: 0.8,
+                            backgroundColor: Color.fromARGB(255, 255, 255, 255),
+                            color: Colors.green,
+                          ),
+                          Positioned(
+                            left: 0,
+                            right: 0,
+                            top: 0,
+                            bottom: 0,
+                            child: Center(
+                              child: Text(
+                                '80%', // Replace with the actual percentage
+                                style: TextStyle(
+                                  color: Colors.black,
+                                  fontWeight: FontWeight.bold,
+                                ),
+                              ),
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+
+                     SizedBox(
+                      height: 300,
+                      child: MyBarGraph(farmsSummery: graphData,),
+                    )
+                  ],
+                ),
               ),
             ),
+
           ],
         ),
       ),

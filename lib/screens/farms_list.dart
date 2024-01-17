@@ -17,7 +17,7 @@ class _FarmListsState extends State<FarmLists> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: const CustomAppBar(),
+      appBar:  CustomAppBar(),
       drawer: MyDrawer(),
       body: Container(
         padding: const EdgeInsets.all(8.0),
@@ -65,7 +65,7 @@ class _FarmListsState extends State<FarmLists> {
                 )
               ],
             ),
-            Expanded(child: Farms()),
+            const Expanded(child: Farms()),
           ],
         ),
       ),
@@ -101,7 +101,7 @@ class _FarmsState extends State<Farms> {
         name: 'Debrezeyit Agricultural Research Center',
         locationName: "Bishoftu, Oromia,Ethiopia",
         status: 'Active',
-        icon: const Icon(Icons.check_circle),
+        icon: const Icon(Icons.check_circle,color: Colors.orange,),
         area: 30000,
       ),
       FarmsListData(
@@ -110,7 +110,7 @@ class _FarmsState extends State<Farms> {
         name: 'Woliso Flower Farm',
         locationName: "Woliso,Shewa, Ethiopia",
         status: 'Inactive',
-        icon: const Icon(Icons.close_rounded),
+        icon: const Icon(Icons.close_rounded,color: Colors.orange,),
         area: 20000,
       ),
       // Add more data items as needed
@@ -126,7 +126,7 @@ class _FarmsState extends State<Farms> {
       future: fetchData(),
       builder: (context, snapshot) {
         if (snapshot.connectionState == ConnectionState.waiting) {
-          return Center(child: CircularProgressIndicator());
+          return const Center(child: CircularProgressIndicator());
         } else if (snapshot.hasError) {
           return Text('Error: ${snapshot.error}');
         } else {
@@ -139,15 +139,42 @@ class _FarmsState extends State<Farms> {
                 onTap: () {
                   Get.to(FarmDetail(farm: item));
                 },
-                child: ListTile(
-                  leading: Image.network(item!.imageUrl),
-                  title: Text(item!.name),
-                  subtitle: Row(
-                    children: [
-                      item!.icon,
-                      Text(item.status),
-                    ],
+                child: Container(
+                  decoration: BoxDecoration(boxShadow: [
+      BoxShadow(
+        color: const Color.fromARGB(255, 63, 63, 63).withOpacity(0.5),
+        spreadRadius: 5,
+        blurRadius: 7,
+        offset: const Offset(0, 3), // changes position of shadow
+      ),
+    ],
+    color:Colors.white,
                   ),
+                  margin: const EdgeInsets.symmetric(horizontal: 20, vertical: 20),
+                  height: 100,
+                  child: Row(
+                    children: [
+                      Container(
+                        margin: const EdgeInsets.only(right:7),
+                        decoration: const BoxDecoration(borderRadius: BorderRadius.all(Radius.circular(20))),
+                        child: Image.network(item!.imageUrl)
+                      ),
+                      Column(
+                        mainAxisAlignment: MainAxisAlignment.start,
+                        children:[
+                          Container(
+                            width: 120,
+                            child: Text(item!.name)), 
+                          const SizedBox(height:5),
+                          Row(mainAxisAlignment: MainAxisAlignment.start,
+                            children: [
+                              item!.icon, Text(item!.status)
+                            ],
+                          )
+                        ]
+                      )
+                    ],
+                  )
                 ),
               );
             },
